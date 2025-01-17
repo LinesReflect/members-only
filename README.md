@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is part of the "Members Only!" project in The Odin Project's Ruby on Rails Curriculum. Read more details at https://www.theodinproject.com/lessons/ruby-on-rails-members-only
 
-Things you may want to cover:
+* Ruby version 3.3.4
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Gemfile
+gem "devise"
+gem "responders"
