@@ -1,0 +1,10 @@
+<h1>All Posts</h1>
+
+<% if Post.none? %>
+    <p>There are no posts yet...</p>
+    <% if current_user %>
+        <p>Create one <%= link_to "HERE", new_post_path %></p>
+    <% else %>
+        <p><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> to create one! </p>
+    <% end %>
+<% end %>

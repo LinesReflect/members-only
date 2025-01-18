@@ -1,0 +1,27 @@
+<h1>New Post</h1>
+
+<%= form_with(model: @post) do |form| %>
+    <% if @post.errors.any? %>
+        <div style="color: red">
+            <h2><%= pluralize(@post.errors.count, "error") %> prohibited this user from being created</h2>
+
+            <ul>
+                <% @post.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div>
+        <%= form.label :title, "Title:" %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :body, "Body:" %><br />
+        <%= form.text_area :body %>
+    </div>
+    <div>
+        <%= form.submit "Submit" %>
+    </div>
+<% end %>
