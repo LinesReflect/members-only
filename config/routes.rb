@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Rails.application.routes.draw do
-  #   devise_for :users, controllers: {
-  #     registrations: "users/registrations"
-  #   }
-  # end
+  Rails.application.routes.draw do
+    devise_for :users, controllers: {
+      registrations: "users/registrations",
+      sessions: "users/sessions"
+    }
+  end
 
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
