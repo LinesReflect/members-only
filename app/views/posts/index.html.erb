@@ -10,11 +10,11 @@
 <% end %>
 
 <ul>
-    <% Post.all.each do |post| %>
+    <% Post.all.reverse.each do |post| %>
         <li>
-            <%= post.title %><br />
-            <p> Created by: <%= post.user.username %></p><br />
+            <%= post.title %>
+            <p> Created by: <%= post.user.username %> on <%= post.created_at.strftime("%d/%m/%Y") %> at <%= post.created_at.strftime("%T%:z") %> </p>
             <%= post.body %>
-        </li>
-        <% end %>
+        </li><br />
+    <% end %>
 </ul>
