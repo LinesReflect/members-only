@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_login, only: [ :new, :create ]
   def new
     @post = Post.new
   end
@@ -22,5 +23,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.expect(post: [ :title, :body ])
+  end
+
+  def require_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
