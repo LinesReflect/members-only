@@ -5,15 +5,22 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     if @post.save
-      redirect_to @posts
+      redirect_to Post.index
     else
-      render :new, status: :unprocessable_entry
+      render :new, status: :unprocessable_entity
     end
   end
 
   def index
     @posts = Post.all
+  end
+
+  private
+
+  def post_params
+    params.expect(post: [ :title, :body ])
   end
 end
