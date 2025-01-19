@@ -13,7 +13,11 @@
     <% Post.all.reverse.each do |post| %>
         <li>
             <%= post.title %>
-            <p> Created by: <%= post.user.username %> on <%= post.created_at.strftime("%d/%m/%Y") %> at <%= post.created_at.strftime("%T%:z") %> </p>
+            <% if user_signed_in? %>
+                <p> Created by: <%= post.user.username %> on <%= post.created_at.strftime("%d/%m/%Y") %> at <%= post.created_at.strftime("%T%:z") %> </p>
+            <% else %>
+                <p> Created on <%= post.created_at.strftime("%d/%m/%Y") %> at <%= post.created_at.strftime("%T%:z") %> </p>
+                <% end %>
             <%= post.body %>
         </li><br />
     <% end %>
