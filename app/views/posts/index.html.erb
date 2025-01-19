@@ -2,7 +2,7 @@
 
 <% if Post.none? %>
     <p>There are no posts yet...</p>
-    <% if current_user %>
+    <% if user_signed_in? %>
         <p>Create one <%= link_to "HERE", new_post_path %></p>
     <% else %>
         <p><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> to create one! </p>
@@ -12,13 +12,13 @@
 <ul>
     <% Post.all.reverse.each do |post| %>
         <li>
-            <%= post.title %>
+            <h2><%= post.title %></h2>
+            <%= post.body %>
             <% if user_signed_in? %>
                 <p> Created by: <%= post.user.username %> on <%= post.created_at.strftime("%d/%m/%Y") %> at <%= post.created_at.strftime("%T%:z") %> </p>
             <% else %>
                 <p> Created on <%= post.created_at.strftime("%d/%m/%Y") %> at <%= post.created_at.strftime("%T%:z") %> </p>
                 <% end %>
-            <%= post.body %>
         </li><br />
     <% end %>
 </ul>
